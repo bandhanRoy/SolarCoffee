@@ -1,0 +1,9 @@
+/Users/admin/Projects/OuterProjects/SolarCoffee/SolarCoffee.Data/bin/Debug/netcoreapp3.1/SolarCoffee.Data.deps.json
+/Users/admin/Projects/OuterProjects/SolarCoffee/SolarCoffee.Data/bin/Debug/netcoreapp3.1/SolarCoffee.Data.dll
+/Users/admin/Projects/OuterProjects/SolarCoffee/SolarCoffee.Data/bin/Debug/netcoreapp3.1/SolarCoffee.Data.pdb
+/Users/admin/Projects/OuterProjects/SolarCoffee/SolarCoffee.Data/obj/Debug/netcoreapp3.1/SolarCoffee.Data.csprojAssemblyReference.cache
+/Users/admin/Projects/OuterProjects/SolarCoffee/SolarCoffee.Data/obj/Debug/netcoreapp3.1/SolarCoffee.Data.csproj.CoreCompileInputs.cache
+/Users/admin/Projects/OuterProjects/SolarCoffee/SolarCoffee.Data/obj/Debug/netcoreapp3.1/SolarCoffee.Data.AssemblyInfoInputs.cache
+/Users/admin/Projects/OuterProjects/SolarCoffee/SolarCoffee.Data/obj/Debug/netcoreapp3.1/SolarCoffee.Data.AssemblyInfo.cs
+/Users/admin/Projects/OuterProjects/SolarCoffee/SolarCoffee.Data/obj/Debug/netcoreapp3.1/SolarCoffee.Data.dll
+/Users/admin/Projects/OuterProjects/SolarCoffee/SolarCoffee.Data/obj/Debug/netcoreapp3.1/SolarCoffee.Data.pdb
