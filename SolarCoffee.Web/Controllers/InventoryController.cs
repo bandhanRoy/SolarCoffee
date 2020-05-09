@@ -49,5 +49,39 @@ namespace SolarCoffee.Web.Controllers
             var inventory = inventoryService.UpdateUnitsAvailable(id, adjustment);
             return Ok(inventory);
         }
+
+        [HttpGet("/api/inventory/shapshot")]
+        public ActionResult GetSnapShotHistory()
+        {
+            logger.LogInformation("Getting all snapshot history");
+            try
+            {
+                var snapShotHistory = inventoryService.GetSnapShotHistory();
+                // get distinct points in timeline was collected
+                var timeLineMarkers = snapShotHistory.Select(i => i.SnapShotTime).Distinct().ToList();
+                // get qunatities grouped by id
+                var snapshots = snapShotHistory.GroupBy(hist => hist.Product, hist => hist.QuantityOnHand,
+                    (key, g) => new ProductInventorySnapshotModel
+                    {
+                        ProductId = key.Id,
+                        QuantityOnHand = g.ToList()
+                    }).OrderBy(hist => hist.ProductId)
+                    .ToList();
+
+                var viewModel = new SnapshotResponse
+                {
+                    TimeLine = timeLineMarkers,
+                    ProductInventorySnapshots = snapshots
+
+                };
+                return Ok(viewModel);
+            }
+            catch (Exception e)
+            {
+                logger.LogError("Error getting snapshot history");
+                logger.LogError(e.StackTrace);
+                return BadRequest("Error Retrieving History");
+            }
+        }
     }
 }

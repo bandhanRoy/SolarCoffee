@@ -9,7 +9,7 @@ using SolarCoffee.Web.ViewModels;
 namespace SolarCoffee.Web.Controllers
 {
     [ApiController]
-    public class OrderController: ControllerBase
+    public class OrderController : ControllerBase
     {
         private readonly ILogger<OrderController> _logger;
         private readonly IOrderService _orderService;
@@ -55,5 +55,7 @@ namespace SolarCoffee.Web.Controllers
             _orderService.MarkFulfilled(id);
             return Ok();
         }
+
     }
+
 }
