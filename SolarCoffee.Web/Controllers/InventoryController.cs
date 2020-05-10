@@ -50,7 +50,7 @@ namespace SolarCoffee.Web.Controllers
             return Ok(inventory);
         }
 
-        [HttpGet("/api/inventory/shapshot")]
+        [HttpGet("/api/inventory/snapshot")]
         public ActionResult GetSnapShotHistory()
         {
             logger.LogInformation("Getting all snapshot history");

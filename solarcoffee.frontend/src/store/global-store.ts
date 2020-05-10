@@ -4,12 +4,12 @@ import { IInventoryTimeLine } from "./../types/InventoryGraph";
 import { InventoryService } from "./../services/inventory-service";
 
 class GlobalStore {
-    snapShotTimeline: IInventoryTimeLine = {
-        productInventorySnapshot: [],
-        timeline: []
+    snapshotTimeline: IInventoryTimeLine = {
+        productInventorySnapshots: [],
+        timeLine: []
     }
 
-    isTimeLineBuildIn: boolean = false;
+    isTimelineBuilt = false;
 }
 
 const state = new GlobalStore();
@@ -17,19 +17,21 @@ const state = new GlobalStore();
 const mutations = make.mutations(state);
 
 const actions = {
-    async assignSnapshots({ commit }) {
+    async assignSnapshots({ commit }: any) {
         const inventoryService = new InventoryService();
         const res = await inventoryService.getSnapShotHistory();
 
         const timeline: IInventoryTimeLine = {
-            productInventorySnapshot: res.productInventorySnapshot,
-            timeline: res.timeline
-        }
+            productInventorySnapshots: res.productInventorySnapshots,
+            timeLine: res.timeLine
+        };
 
-        commit('SET_SNASPSHOT_TIMELINE', timeline);
+        commit('SET_SNAPSHOT_TIMELINE', timeline);
         commit('SET_IS_TIMELINE_BUILT', true);
-    }
-}
+    },
+};
+
+const getters = {};
 
 export default {
     state,

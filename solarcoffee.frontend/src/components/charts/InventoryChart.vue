@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <apexchart type="area" :width="'100%'" height="300" :options="options" :series="series"></apexchart>
+  <div v-if="isTimelineBuilt">
+    <apexchart :width="'100%'" type="line" height="300" :options="options" :series="series"></apexchart>
   </div>
 </template>
 
@@ -8,17 +8,21 @@
 import { Vue, Component } from "vue-property-decorator";
 import { IInventoryTimeLine } from "../../types/InventoryGraph";
 import { Sync, Get } from "vuex-pathify";
+import VueApexCharts from "vue-apexcharts";
+
+Vue.component("apexchart", VueApexCharts);
+
 @Component({
   name: "InventoryCharts",
   components: {}
 })
 export default class InventoryCharts extends Vue {
-  @Sync("snapshotTimeline")
-  snapshotTimeline: IInventoryTimeLine;
-  @Get("isTimelineBuilt")
-  timelineBuilt: Boolean;
+  @Sync("snapshotTimeline") snapshotTimeline: IInventoryTimeLine;
 
-  getOptions() {
+  @Get("isTimelineBuilt") isTimelineBuilt?: boolean;
+
+  get options() {
+    // console.log(this.snapshotTimeline);
     return {
       dataLabels: { enabled: false },
       fill: {
@@ -28,14 +32,14 @@ export default class InventoryCharts extends Vue {
         curve: "smooth"
       },
       xaxis: {
-        categories: this.snapshotTimeline.timeline,
+        categories: this.snapshotTimeline.timeLine,
         type: "datetime"
       }
     };
   }
 
   get series() {
-    return this.snapshotTimeline.productInventorySnapshot.map(snapshot => ({
+    return this.snapshotTimeline.productInventorySnapshots.map(snapshot => ({
       name: snapshot.productId,
       data: snapshot.quantityOnHand
     }));

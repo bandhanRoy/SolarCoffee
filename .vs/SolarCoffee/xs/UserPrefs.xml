@@ -2,8 +2,8 @@
   <MonoDevelop.Ide.ItemProperties.SolarCoffee.Test PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="SolarCoffee.Web/Controllers/InventoryController.cs">
     <Files>
-      <File FileName="SolarCoffee.Web/Controllers/InventoryController.cs" Line="53" Column="42" />
-      <File FileName="SolarCoffee.Web/ViewModels/ProductInventorySnapshotModel.cs" Line="15" Column="51" />
+      <File FileName="SolarCoffee.Web/Controllers/InventoryController.cs" Line="74" Column="58" />
+      <File FileName="SolarCoffee.Web/ViewModels/ProductInventorySnapshotModel.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
