@@ -1,6 +1,6 @@
 <template>
   <div v-if="isTimelineBuilt">
-    <apexchart :width="'100%'" type="line" height="300" :options="options" :series="series"></apexchart>
+    <apexchart :width="'100%'" type="area" height="300" :options="options" :series="series"></apexchart>
   </div>
 </template>
 
