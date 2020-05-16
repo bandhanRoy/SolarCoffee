@@ -5,7 +5,7 @@
       <ul class="newProduct">
         <li>
           <label for="isTaxable">Is this product taxable?</label>
-          <input type="checkbox" id="is-Taxable" v-model="newProduct.isTaxable" />
+          <input type="checkbox" id="isTaxable" v-model="newProduct.isTaxable" />
         </li>
         <li>
           <label for="name">Name</label>
@@ -22,8 +22,8 @@
       </ul>
     </template>
     <template v-slot:footer>
-      <solar-button type="button" @button:click="save">Save Product</solar-button>
-      <solar-button type="button" @button:click="close">Close</solar-button>
+      <solar-button type="button" aria-label="Save Product" @button:click="save">Save Product</solar-button>
+      <solar-button type="button" aria-label="Close Modal" @button:click="close">Close</solar-button>
     </template>
   </solar-modal>
 </template>
