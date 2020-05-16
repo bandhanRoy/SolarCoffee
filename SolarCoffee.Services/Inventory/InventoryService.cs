@@ -80,7 +80,7 @@ namespace SolarCoffee.Services.Inventory
 
                 try
                 {
-                    CreateSnapShot();
+                    CreateSnapShot(inventory);
                 }catch(Exception e)
                 {
                     _logger.LogError("Error creating inventory snapshot");
@@ -113,25 +113,18 @@ namespace SolarCoffee.Services.Inventory
         /// Create a snapshot record using the provided Inventory Instance
         /// </summary>
         /// <param name="productInventory"></param>
-        private void CreateSnapShot()
+        private void CreateSnapShot(ProductInventory productInventory)
         {
             var now = DateTime.UtcNow;
 
-            var inventories = _db.ProductInventorys
-                .Include(inv => inv.Product)
-                .ToList();
-
-            foreach (var inventory in inventories)
+            var snapshot = new ProductInventorySnapshot
             {
-                var snapshot = new ProductInventorySnapshot
-                {
-                    SnapShotTime = now,
-                    Product = inventory.Product,
-                    QuantityOnHand = inventory.QuantityOnHand
-                };
-                _db.Add(snapshot);
+                SnapShotTime = now,
+                Product = productInventory.Product,
+                QuantityOnHand = productInventory.QuantityOnHand
+            };
 
-            }
+            _db.Add(snapshot);
             _db.SaveChanges();
         }
     }
